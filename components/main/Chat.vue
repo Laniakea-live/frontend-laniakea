@@ -72,7 +72,7 @@
         :class="{ hideMe2: visible.chatItem }"
         style="cursor:pointer;background-color:rgba(0,0,0,0.4);padding: 10px 10px 10px 10px"
       >
-        <strong :style="`color:${chatMessage.payload.color}`">{{ chatMessage.user }}: </strong>{{ chatMessage.payload.message }}
+        <strong :style="`color:${chatMessage.user.color}`">{{ chatMessage.user.name }} </strong>{{ chatMessage.message }}
       </p>
     </v-card-text>
     <v-card-text
@@ -96,7 +96,6 @@
 </template>
 
 <script>
-const randomColor = require('randomcolor')
 export default {
   name: 'Chat',
   props: {
@@ -113,7 +112,10 @@ export default {
     return {
       chat: {
         message: '',
-        color: randomColor()
+        user: {
+          name: '',
+          color: ''
+        }
       },
       video: null,
       visible: {
@@ -125,18 +127,12 @@ export default {
       copyStatus: 'copyToClipboard'
     }
   },
-  computed: {
-    randomColor () {
-      return randomColor()
-    }
-  },
   methods: {
     reload () {
       this.$emit('closeSession')
     },
     sendChat () {
       if (this.chat.message) {
-        this.$socket(this.$store.state.auth).chat(this.chat)
         this.$emit('chat', this.chat)
         this.chat.message = ''
       }
@@ -190,24 +186,24 @@ width: 5px;
   background-color:rgba(0,0,0,0);
 }
 .hideMe {
-    -moz-animation: cssAnimation 1s ease-in 2s forwards;
+    -moz-animation: cssAnimation 1s ease-in 1s forwards;
     /* Firefox */
-    -webkit-animation: cssAnimation 1s ease-in 2s forwards;
+    -webkit-animation: cssAnimation 1s ease-in 1s forwards;
     /* Safari and Chrome */
-    -o-animation: cssAnimation 1s ease-in 2s forwards;
+    -o-animation: cssAnimation 1s ease-in 1s forwards;
     /* Opera */
-    animation: cssAnimation 1s ease-in 2s forwards;
+    animation: cssAnimation 1s ease-in 1s forwards;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
 }
 .hideMe2 {
-    -moz-animation: cssAnimation 1s ease-in 4s forwards;
+    -moz-animation: cssAnimation 1s ease-in 3s forwards;
     /* Firefox */
-    -webkit-animation: cssAnimation 1s ease-in 4s forwards;
+    -webkit-animation: cssAnimation 1s ease-in 3s forwards;
     /* Safari and Chrome */
-    -o-animation: cssAnimation 1s ease-in 4s forwards;
+    -o-animation: cssAnimation 1s ease-in 3s forwards;
     /* Opera */
-    animation: cssAnimation 1s ease-in 4s forwards;
+    animation: cssAnimation 1s ease-in 3s forwards;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
 }

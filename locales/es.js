@@ -48,7 +48,9 @@ export default {
     switchRoleBtn: 'Cambiar Rol',
     closeSessionBtn: 'Cerrar sesión',
     copyToClipboard: 'Copiar al portapapeles',
-    copiedToClipboard: '¡Copiado al portapapeles!'
+    copiedToClipboard: '¡Copiado al portapapeles!',
+    pause: 'ha pausado la reproduccion.',
+    resume: 'ha continuado la reproduccion.'
   },
   chat: {
     chatBox: {

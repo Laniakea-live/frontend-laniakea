@@ -18,7 +18,7 @@
         <v-icon>mdi-exit-to-app</v-icon>
       </v-btn>
     </v-app-bar>
-    <v-row justify="center" align="center">
+    <v-row justify="center" align="center" style="height:100vh;margin-top:-130px;">
       <v-col cols="12" sm="12" md="12" class="py-0 px-0">
         <v-card color="transparent" elevation="0" class="align-center">
           <v-alert
@@ -75,6 +75,7 @@
           </v-card-text>
         </v-card>
       </v-col>
+      <MainDebugger v-if="$config.dev" />
     </v-row>
   </div>
 </template>

@@ -48,7 +48,9 @@ export default {
     switchRoleBtn: 'Change Role',
     closeSessionBtn: 'Close session',
     copyToClipboard: 'Copy to clipboard',
-    copiedToClipboard: 'Copied to clipboard!'
+    copiedToClipboard: 'Copied to clipboard!',
+    pause: 'has paused the video',
+    resume: 'has resumed the video'
   },
   chat: {
     chatBox: {

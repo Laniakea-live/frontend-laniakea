@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <div>
     <v-row class="justify-center">
       <pre>
       {{ JSON.stringify($store.state.sessionHandler, null, 4) }}
@@ -10,5 +10,5 @@
         {{ $config }}
       </code>
     </v-row>
-  </v-container>
+  </div>
 </template>

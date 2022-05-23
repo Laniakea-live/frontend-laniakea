@@ -20,6 +20,7 @@ export default {
   },
 
   publicRuntimeConfig: {
+    WS_ENDPOINT: process.env.API_STRAPI_ENDPOINT || 'http://localhost:1337',
     API_STRAPI_ENDPOINT: process.env.API_STRAPI_ENDPOINT || 'http://localhost:1337/api/',
     dev: process.env.NODE_ENV !== 'production'
   },
@@ -31,7 +32,7 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: '~/plugins/vue-plyr', mode: 'client' },
-    { src: '~/plugins/socketio', mode: 'client' }
+    { src: '~/plugins/chat', mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

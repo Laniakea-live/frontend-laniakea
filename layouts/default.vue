@@ -4,10 +4,7 @@
       <div class="landscape" />
     </section>
     <v-main>
-      <v-container fluid>
-        <nuxt />
-      </v-container>
-      <MainDebugger v-if="$config.dev" />
+      <nuxt />
     </v-main>
   </v-app>
 </template>
