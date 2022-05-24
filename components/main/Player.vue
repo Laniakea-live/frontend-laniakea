@@ -2,8 +2,9 @@
   <div
     id="container"
     style="width:100%;min-width:300px;"
+    @mousemove="mousemove"
   >
-    <MainUserList :onlineusers="onlineUsers" />
+    <MainUserList class="hideableElement1 hideMe" :onlineusers="onlineUsers" />
     <vue-plyr ref="plyr" :options="$store.state.sessionHandler.role === 'host' ? optionsHost : optionsParticipant">
       <video
         ref="video"
@@ -35,6 +36,9 @@
       :onlineusers="onlineUsers"
       @chat="chat($event)"
       @closeSession="closeSession()"
+      @chatFocused="chatFocused"
+      @chatBlurred="chatBlurred"
+      @updateVideoFile="updateVideoFile($event)"
     />
   </div>
 </template>
@@ -68,7 +72,9 @@ export default {
       ws: null,
       socket: null,
       chatMessages: [],
-      onlineUsers: []
+      onlineUsers: [],
+      chatInputFocus: false,
+      timeout: null
     }
   },
   computed: {
@@ -132,7 +138,7 @@ export default {
         }
       })
       this.socket.on('chat', (data) => {
-        this.chatMessages.unshift(data)
+        this.chatMessages.unshift(JSON.parse(data))
       })
     },
     closeSession () {
@@ -162,11 +168,62 @@ export default {
         }
       })
       this.chatMessages.unshift(formattedMessage)
-      this.socket.emit('chat', formattedMessage)
+      this.socket.emit('chat', JSON.stringify(formattedMessage))
+    },
+    chatFocused () {
+      this.chatInputFocus = true
+      this.mousemove()
+    },
+    chatBlurred () {
+      this.chatInputFocus = false
+      this.mousemove()
+    },
+    mousemove () {
+      if (!this.timeout) {
+        this.timeout = 500
+        const element1 = document.querySelector('.hideableElement1')
+
+        element1.classList.remove('hideMe')
+        if (!this.chatInputFocus) {
+          setTimeout(() => {
+            element1.classList.add('hideMe')
+          }, 50)
+          setTimeout(() => {
+            this.timeout = null
+          }, 1000)
+        } else {
+          setTimeout(() => {
+            this.timeout = null
+          }, 1000)
+        }
+      }
+    },
+    async updateVideoFile (file) {
+      await this.$store.dispatch('sessionHandler/blobURL', window.URL.createObjectURL(file))
     }
   }
 }
 </script>
 <style>
-
+.hideMe {
+    -moz-animation: cssAnimation 1s ease-in 1s forwards;
+    /* Firefox */
+    -webkit-animation: cssAnimation 1s ease-in 1s forwards;
+    /* Safari and Chrome */
+    -o-animation: cssAnimation 1s ease-in 1s forwards;
+    /* Opera */
+    animation: cssAnimation 1s ease-in 1s forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+@keyframes cssAnimation {
+    to {
+        opacity: 0;
+    }
+}
+@-webkit-keyframes cssAnimation {
+    to {
+        opacity: 0;
+    }
+}
 </style>

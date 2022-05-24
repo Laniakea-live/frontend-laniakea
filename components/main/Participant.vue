@@ -1,36 +1,31 @@
 <template>
   <div>
+    <v-alert
+      text
+      dense
+      icon="mdi-check"
+      border="left"
+    >
+      <h3>
+        {{ $t('participant.title') }} <strong>{{ $store.state.auth.username }}</strong>
+      </h3>
+    </v-alert>
     <v-card v-if="!$store.state.sessionHandler.started" class="mt-5 mx-auto pa-3 rounded-xl" max-width="774" color="rgba(10,30,120,.3)" elevation="0">
-      <v-row class="justify-space-between">
-        <v-col class="justify-center">
-          <v-alert
-            text
-            dense
-            icon="mdi-check"
-            border="left"
-            class="ml-4"
+      <v-row class="justify-center">
+        <v-btn
+          color="red darken-1"
+          class="mt-3 mb-3 white--text"
+          rounded
+          elevation="0"
+          @click="$store.commit('sessionHandler/unstage'), $router.push('/')"
+        >
+          {{ $t('session.switchRoleBtn') }}
+          <v-icon
+            right
           >
-            <h3>
-              {{ $t('participant.title') }} <strong>{{ $store.state.auth.username }}</strong>
-            </h3>
-          </v-alert>
-        </v-col>
-        <v-col cols="12" sm="12" md="4" lg="3" xl="3">
-          <v-btn
-            color="red darken-1"
-            class="mt-lx-4 mt-lg-4 mt-md-4 ml-4 ml-sm-4 ml-lg-0 mb-4 mb-sm-4 white--text"
-            rounded
-            elevation="0"
-            @click="$store.commit('sessionHandler/unstage'), $router.push('/')"
-          >
-            {{ $t('session.switchRoleBtn') }}
-            <v-icon
-              right
-            >
-              mdi-account-arrow-left-outline
-            </v-icon>
-          </v-btn>
-        </v-col>
+            mdi-account-arrow-left-outline
+          </v-icon>
+        </v-btn>
       </v-row>
       <v-card-text>
         <v-text-field
@@ -86,6 +81,17 @@
       <v-card-text v-if="$store.state.sessionHandler.started" class="text-left px-0 pb-0 d-flex" style="height:100vh">
         <MainPlayer />
       </v-card-text>
+    </v-card>
+    <v-card v-if="!$store.state.sessionHandler.started" class="mt-5 mx-auto pa-3 rounded-xl" max-width="774" color="rgba(10,30,120,.3)" elevation="0">
+      <p class="mx-auto text-center">
+        {{ $t('tutorial2.first') }}
+      </p>
+      <ul>
+        <li>{{ $t('tutorial2.second') }}</li>
+        <li>{{ $t('tutorial2.third') }}</li>
+        <li>{{ $t('tutorial2.fourth') }}</li>
+        <li>{{ $t('tutorial2.fifth') }}</li>
+      </ul>
     </v-card>
   </div>
 </template>

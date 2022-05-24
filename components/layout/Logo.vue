@@ -1,10 +1,10 @@
 <template>
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 138.54 217.12"
+    viewBox="0 0 738.54 217.12"
     class="NuxtLogo"
-    width="405"
-    height="90"
+    width="202"
+    height="35"
     style="margin-top:0.5rem"
   >
     <defs>

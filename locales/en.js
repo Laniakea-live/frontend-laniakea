@@ -55,7 +55,7 @@ export default {
   chat: {
     chatBox: {
       label: 'Start to write',
-      placeholder: 'Another april without her...'
+      placeholder: 'Luke, I am your...'
     }
   },
   host: {
@@ -75,6 +75,19 @@ export default {
     fileInputPlaceholder: 'Videofile to sync',
     btnBegin: 'Join the session',
     btnBeginStarted: 'Session joined successful'
+  },
+  tutorial: {
+    first: 'How to sync a video with your friends',
+    second: 'Select the file in the input above',
+    third: 'Click on the button to begin the sync',
+    fourth: 'In the upper right corner you can see the unique ID of the session',
+    fifth: 'Click it to copy and then share with your friends'
+  },
+  tutorial2: {
+    first: 'How to enter an existing session',
+    second: 'Paste the unique ID of the session in the input above',
+    third: 'Select the videofile you want to sync in the input above',
+    fourth: 'Click on the button to enter se session and wait for the host to begin the sync'
   },
   error: {
     index: {

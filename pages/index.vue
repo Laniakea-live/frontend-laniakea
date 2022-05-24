@@ -6,6 +6,8 @@
       color="transparent"
       class="mb-4 p-0"
     >
+      <LayoutLogo />
+
       <v-spacer />
 
       <v-btn
@@ -28,9 +30,6 @@
           >
             {{ error.message }}
           </v-alert>
-          <v-card-title class="headline justify-center">
-            <LayoutLogo />
-          </v-card-title>
           <v-card-title class="headline justify-center">
             <h1 class="text-center">
               {{ $t('index.welcome') }} {{ $store.state.auth.username }}
@@ -56,7 +55,7 @@
             <v-btn
               elevation="0"
               rounded
-              color="deep-purple accent-4"
+              color="deep-purple accent-2 white--text"
               outlined
               large
               class="mr-sm-4 mr-md-4 mr-lg-4 mb-4 mb-xs-0 mb-sm-0 mb-md-0 mb-lg-0"
@@ -75,7 +74,7 @@
           </v-card-text>
         </v-card>
       </v-col>
-      <MainDebugger v-if="$config.dev" />
+      <MainDebugger v-if="false" />
     </v-row>
   </div>
 </template>

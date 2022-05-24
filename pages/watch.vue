@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :style="!$store.state.sessionHandler.started ? 'height:100vh;display:grid;place-items:center;margin-top:-100px;' : ''">
     <MainHost v-if="$route.query.role === 'host'" />
     <MainParticipant v-else />
   </div>

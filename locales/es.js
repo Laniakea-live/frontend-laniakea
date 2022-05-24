@@ -55,7 +55,7 @@ export default {
   chat: {
     chatBox: {
       label: 'Empieza a escribir',
-      placeholder: 'Otro abril sin ella...'
+      placeholder: '...'
     }
   },
   host: {
@@ -75,6 +75,19 @@ export default {
     fileInputPlaceholder: 'Video a sincronizar',
     btnBegin: 'Unirte a la sesión',
     btnBeginStarted: 'Te has unido a la sesión'
+  },
+  tutorial: {
+    first: 'Como empezar a usar la aplicacion',
+    second: 'Selecciona un video para sincronizar dando click en el campo de arriba',
+    third: 'Haz click en el boton de iniciar para comenzar la transmision',
+    fourth: 'Una vez iniciado podras ver la ID unique de la sesion en la esquina superior derecha',
+    fifth: 'Haz click para copiar el codigo y compartelo con tus amigos'
+  },
+  tutorial2: {
+    first: 'Como ingresar a una sesion existente',
+    second: 'Ingresa la ID unique de la sesion en el campo de mas arriba',
+    third: 'Selecciona el mismo video que el anfitrión para sincronizar',
+    fourth: 'Haz click en el boton de iniciar para unirte a la sesion y esperar que la misma comience'
   },
   error: {
     index: {

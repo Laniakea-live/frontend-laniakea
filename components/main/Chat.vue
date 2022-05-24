@@ -70,16 +70,13 @@
         v-for="chatMessage in chatmessages"
         :key="chatMessage.date"
         :class="{ hideMe2: visible.chatItem }"
-        style="cursor:pointer;background-color:rgba(0,0,0,0.4);padding: 10px 10px 10px 10px"
+        style="cursor:pointer;background-color:rgba(0,0,0,0.4);padding: 10px 10px 10px 10px;font-size:15px; "
       >
         <strong :style="`color:${chatMessage.user.color}`">{{ chatMessage.user.name }} </strong>{{ chatMessage.message }}
       </p>
     </v-card-text>
     <v-card-text
-      :class="{ hideMe: visible.inputChat }"
       style="flex: 0 1 auto;background-color:rgba(0,0,0,0.4);boder-radius:20px;"
-      @mouseenter="visible.inputChat = false, visible.chat = false, visible.chatItem = false"
-      @mouseleave="visible.inputChat = true, visible.chat = true, visible.chatItem = true"
     >
       <v-text-field
         v-model="chat.message"
@@ -90,6 +87,8 @@
         hide-details
         autocomplete="off"
         @keydown.enter="sendChat()"
+        @focus="chatFocused"
+        @blur="chatBlurred"
       />
     </v-card-text>
   </v-card>
@@ -129,7 +128,7 @@ export default {
   },
   methods: {
     reload () {
-      this.$emit('closeSession')
+      this.$router.push('/')
     },
     sendChat () {
       if (this.chat.message) {
@@ -143,6 +142,12 @@ export default {
     copyId () {
       navigator.clipboard.writeText(this.$store.state.sessionHandler.uniqueid)
       this.copyStatus = 'copiedToClipboard'
+    },
+    chatFocused () {
+      this.$emit('chatFocused', true)
+    },
+    chatBlurred () {
+      this.$emit('chatBlurred', false)
     }
   }
 
