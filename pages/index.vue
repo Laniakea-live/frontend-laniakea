@@ -75,6 +75,7 @@
         </v-card>
       </v-col>
       <MainDebugger v-if="false" />
+      <MainAd />
     </v-row>
   </div>
 </template>

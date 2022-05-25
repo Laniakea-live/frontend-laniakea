@@ -85,6 +85,7 @@
         <li>{{ $t('tutorial.fifth') }}</li>
       </ul>
     </v-card>
+    <MainAd />
   </div>
 </template>
 

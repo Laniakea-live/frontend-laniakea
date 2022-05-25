@@ -93,6 +93,7 @@
         <li>{{ $t('tutorial2.fifth') }}</li>
       </ul>
     </v-card>
+    <MainAd />
   </div>
 </template>
 

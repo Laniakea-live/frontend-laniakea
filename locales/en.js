@@ -89,6 +89,9 @@ export default {
     third: 'Select the videofile you want to sync in the input above',
     fourth: 'Click on the button to enter se session and wait for the host to begin the sync'
   },
+  ad: {
+    title: 'Support us by allowing this ad to appear'
+  },
   error: {
     index: {
       usernameNotDefined: 'You must have an username!'

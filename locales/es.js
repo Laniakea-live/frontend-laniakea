@@ -89,6 +89,9 @@ export default {
     third: 'Selecciona el mismo video que el anfitrión para sincronizar',
     fourth: 'Haz click en el boton de iniciar para unirte a la sesion y esperar que la misma comience'
   },
+  ad: {
+    title: 'Apoyanos dejando aparecer esta publicidad'
+  },
   error: {
     index: {
       usernameNotDefined: '¡Debes tener un nombre!'
