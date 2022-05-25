@@ -82,7 +82,7 @@ export default {
     loginFailed: false
   }),
   mounted () {
-    if (this.$route.query.firstTime) {
+    if (this.$route.query.register) {
       this.firstTime = true
     }
     if (this.$route.query.loginFailed) {

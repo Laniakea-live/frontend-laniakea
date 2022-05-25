@@ -3,6 +3,14 @@
     flat
     color="rgba(51,51,51,0)"
   >
+    <v-alert
+      v-if="errorMessage !== ''"
+      type="error"
+      class="red darken-4"
+      tile
+    >
+      {{ errorMessage }}
+    </v-alert>
     <v-card-title class="justify-center">
       {{ $t('auth.registerTitle') }}
     </v-card-title>
@@ -86,7 +94,8 @@ export default {
     confirmPassword: '',
     loading: false,
     showPassword: false,
-    valid: false
+    valid: false,
+    errorMessage: ''
   }),
   head () {
     return {
@@ -128,33 +137,17 @@ export default {
       this.checkbox = false
     },
     async createUser () {
-      this.loading = true
-      const { register } = await this.$strapi.graphql({
-        query: `mutation($input: UsersPermissionsRegisterInput!) {
-          register(input:$input){
-            jwt
-            user{
-              id
-              username
-              confirmed
-            }
-          }
-        }`,
-        variables: {
-          input: {
-            username: this.username,
-            email: this.email,
-            password: this.password
-          }
+      await this.$store.dispatch('loginHandler/createUser', {
+        username: this.username,
+        email: this.email,
+        password: this.password
+      }).then((response) => {
+        if (response.error !== undefined) {
+          this.errorMessage = 'User exists or email already in use. Try another'
+        } else {
+          this.$router.push('/login?register=true')
         }
       })
-      if (register.jwt) {
-        this.loading = false
-        this.$router.replace({ path: '/login?firstTime' })
-      } else {
-        this.loading = false
-        this.valid = false
-      }
     }
   }
 }

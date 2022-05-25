@@ -17,7 +17,7 @@ export default {
     }
   },
   login: {
-    title: 'Log into your account',
+    title: 'Now you can Log into your account',
     username: 'Username',
     usernameHint: 'Enter your username',
     password: 'Password',

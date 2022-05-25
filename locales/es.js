@@ -17,7 +17,7 @@ export default {
     }
   },
   login: {
-    title: 'Ingresa a tu cuenta Laniakea',
+    title: 'Ahora puedes ingresar a tu cuenta Laniakea',
     username: 'Usuario',
     usernameHint: 'Ingresa tu nombre de usuario',
     password: 'Contraseña',

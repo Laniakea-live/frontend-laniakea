@@ -39,5 +39,29 @@ export const actions = {
     } catch (error) {
       throw new Error(`LOGIN ACTION ${error}`)
     }
+  },
+  createUser ({ commit }, user) {
+    try {
+      return new Promise((resolve, reject) => {
+        fetch(`${this.$config.API_STRAPI_ENDPOINT}auth/local/register`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            username: user.username,
+            email: user.email,
+            password: user.password
+          })
+        })
+          .then(res => res.json())
+          .then((register) => {
+            resolve(register)
+            // window.location.href = '/login?register=true'
+          })
+      })
+    } catch (error) {
+      throw new Error(`LOGIN ACTION ${error}`)
+    }
   }
 }

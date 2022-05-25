@@ -20,8 +20,8 @@ export default {
   },
 
   publicRuntimeConfig: {
-    WS_ENDPOINT: process.env.API_STRAPI_ENDPOINT || 'http://localhost:1337',
-    API_STRAPI_ENDPOINT: process.env.API_STRAPI_ENDPOINT || 'http://localhost:1337/api/',
+    WS_ENDPOINT: process.env.API_STRAPI_ENDPOINT || 'http://localhost:1338',
+    API_STRAPI_ENDPOINT: process.env.API_STRAPI_ENDPOINT || 'http://localhost:1338/api/',
     dev: process.env.NODE_ENV !== 'production'
   },
 
