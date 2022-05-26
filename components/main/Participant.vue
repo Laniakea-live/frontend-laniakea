@@ -1,6 +1,7 @@
 <template>
   <div>
     <v-alert
+      v-if="!$store.state.sessionHandler.started"
       text
       dense
       icon="mdi-check"
